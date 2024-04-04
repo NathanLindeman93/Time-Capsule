@@ -8,4 +8,4 @@ from django.shortcuts import redirect
 # Create your views here.
 
 def index(request):
-    return render(request, 'console_app/index.html')
+    return render(request, 'capsule_app/index.html')
