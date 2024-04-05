@@ -1,0 +1,24 @@
+{% extends "capsule_app/base_template.html" %}
+
+{% block content %}
+
+<font color= "#663300"><h1>Creator List</h1></font>
+
+{% if creator_list %}
+    <ul>
+        {% for creator in creator_list %}
+        
+            <div class="card bg-transparent mb-1" style="width: 18rem">
+                <div class="card-body" style="background-color: #ffe3ab">
+                    <h5 class="card-title">{{ creator.name }}</h5>
+                    <a href="{{ creator.get_absolute_url }}" class="btn btn-warning">View Creator</a>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no creators registered.</p>
+{% endif %}
+
+{% endblock %}

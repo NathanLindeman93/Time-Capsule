@@ -1,5 +1,16 @@
 {% extends "capsule_app/base_template.html"%}
 
 {% block content %}
-<h1>Test</h1>
+
+<font color= "#663300"><h1>List of Primary Capsules</h1> </font>
+    <ul class="list-group">
+        {% for i in creator_primary_capsules %}
+            <li class="list-group-item list-group-item-secondary" style="background-color: #ffe3ab">
+                <p><strong>Title: {{i.title}} </p></strong>
+                Story: <br>{{ i.synopsis }} <br><br>
+                <a href="{{ i.get_absolute_url }}" class="btn btn-warning">View Capsule</a>
+            </li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

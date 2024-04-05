@@ -1,0 +1,16 @@
+{% extends "capsule_app/base_template.html"%}
+
+{% block content %}
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" class="btn btn-success" value="Submit Form">
+    <button class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+
+</form>
+
+{% endblock %}

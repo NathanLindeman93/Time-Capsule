@@ -1,0 +1,18 @@
+{% extends "capsule_app/base_template.html"%}
+
+{% block content %}
+
+<h1><strong>Capsule Title: </strong>{{ capsule.title }}</h1>
+<hr>
+<p><h2><strong>Life Story:</strong></h2></p>
+<p><h5>{{ capsule.synopsis }} </h5></p>
+<br>
+<hr>
+<h2>Education: {{ capsule.education}}</h2>
+<h2>Profession: {{ capsule.profession}}</h2>
+<h2>Favorite Book: {{ capsule.fav_book}}</h2>
+<h2>Favorite Movie: {{ capsule.fav_movie}}</h2>
+<h2>Favorite Quote: {{ capsule.fav_quote}}</h2>
+<button class="btn btn-primary" onclick="window.history.back()">Back</button>
+
+{% endblock %}

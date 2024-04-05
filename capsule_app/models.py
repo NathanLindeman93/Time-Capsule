@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Creator(models.Model):
 
-    name = models.CharField(max_length=200, blank = False)
+    name = models.CharField(max_length=200, default = 'name', blank = False)
     email = models.EmailField(max_length=100)
 
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -19,25 +19,16 @@ class Creator(models.Model):
 
 
 class Capsule(models.Model):
-    
-    EDUCATION = (
-        ('MS', 'Middle School'),
-        ('HS', 'High School'),
-        ('AD', 'Associate Degree'),
-        ('BD', 'Bachelor\'s Degree'),
-        ('MD', 'Master\'s Degree'),
-        ('DD', 'Doctoral Degree'),
-    )
 
-    title = models.CharField(max_length = 200, default = 'Capsule Name', blank=False)
-    is_primary = models.BooleanField(default = False)
-    synopsis = models.TextField(blank = True)
-    education = models.CharField(max_length = 200, choices=EDUCATION, blank = True)
-    profession = models.CharField(max_length = 200, blank = True)
-    fav_book = models.CharField(max_length = 200, blank = True)
-    fav_movie = models.CharField(max_length = 200, blank = True)
-    fav_quote = models.TextField(blank = True)
-    user = models.ForeignKey(Creator, on_delete = models.CASCADE)
+    title = models.CharField("Capsule Title", max_length = 200, default = 'Capsule Name', blank=False)
+    is_primary = models.BooleanField("Primary Capsule?", default = False)
+    synopsis = models.TextField("Life Story", blank = True)
+    education = models.CharField("Education", max_length = 200, blank = True)
+    profession = models.CharField("Profession", max_length = 200, blank = True)
+    fav_book = models.CharField("Favorite Book", max_length = 200, blank = True)
+    fav_movie = models.CharField("Favorite Movie", max_length = 200, blank = True)
+    fav_quote = models.TextField("Favorite Quote", blank = True)
+    creator = models.ForeignKey(Creator, on_delete = models.CASCADE)
     
     def __str__(self):
         return self.title
