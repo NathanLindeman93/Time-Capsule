@@ -13,7 +13,7 @@ def index(request):
 
 class CapsuleDetailView(generic.DetailView):
     model= Capsule
-    
+
 class CreatorListView(generic.ListView):
     model = Creator
 

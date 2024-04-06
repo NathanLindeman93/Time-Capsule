@@ -9,7 +9,7 @@ class Creator(models.Model):
     name = models.CharField(max_length=200, default = 'name', blank = False)
     email = models.EmailField(max_length=100)
 
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, unique = True)
 
     def __str__(self):
         return self.name

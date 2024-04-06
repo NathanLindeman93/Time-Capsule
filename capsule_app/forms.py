@@ -7,8 +7,10 @@ class CapsuleForm(ModelForm):
     class Meta:
         model = Capsule
         fields = '__all__'
+        exclude = ('creator',)
     
 class CreatorForm(ModelForm):
     class Meta:
         model = Creator
         fields = '__all__'
+        exclude = ('user',)

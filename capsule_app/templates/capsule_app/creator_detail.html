@@ -5,9 +5,15 @@
 <h1>Creator Name: {{ creator.name }}</h1>
 
 <p><strong>Contact Email: </strong> {{ creator.email }}</p>
+
+<a href="{% url 'update-creator' creator_id=creator.id %}" class="btn btn-success">Update Creator</a>
+
 <hr>
-<p><strong>Capsule List:</strong></p>
-<a href="{% url 'create-capsule' creator_id=creator.id %}" class="btn btn-primary">Create New Capsule</a><br><br>
+<br>
+<a href="{% url 'create-capsule' creator_id=creator.id %}" class="btn btn-primary">Create New Capsule</a>
+<br><br>
+<h3><strong>Capsule List:</strong></h3>
+
 
 {% if capsules %}
     <ul>
@@ -21,7 +27,6 @@
                     <a href="{% url 'delete-capsule' creator_id=creator.id capsule_id=capsule.id %}" class="btn btn-danger">Delete Capsule</a>
                 </div>
             </div>
-            <br>
         {% endfor %}
     </ul>
 {% else %}
