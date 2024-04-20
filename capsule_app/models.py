@@ -1,6 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+from guardian.shortcuts import assign_perm
+
 
 # Create your models here.
 
@@ -30,11 +34,20 @@ class Capsule(models.Model):
     fav_quote = models.TextField("Favorite Quote", blank = True)
     creator = models.ForeignKey(Creator, on_delete = models.CASCADE)
     
+    class Meta:
+        permissions = (
+            ('create_capsule', 'Create Capsule'),
+        )
+
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
         return reverse('capsule-detail', args=[str(self.id)])
     
-
-    
+@receiver(post_save, sender=Capsule)
+def set_permission(sender, instance, **kwargs):
+    assign_perm('add_capsule', instance.creator.user, instance)
+    assign_perm('change_capsule', instance.creator.user, instance)
+    assign_perm('delete_capsule', instance.creator.user, instance)
+    assign_perm('view_capsule', instance.creator.user, instance)

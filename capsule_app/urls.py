@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('', views.index, name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/', views.registerPage, name = 'register_page'),
 
     path('capsules/<int:pk>', views.CapsuleDetailView.as_view(), name= 'capsule-detail'),
     path('creators/', views.CreatorListView.as_view(), name= 'creators'),

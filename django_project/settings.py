@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    'guardian',
     'capsule_app',
 ]
 
 #Adds support for authenticating users
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +140,8 @@ LOGIN_REDIRECT_URL='/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Guardian Stuff
+
+GUARDIAN_RAISE_403 = False
+GUARDIAN_RENDER_403 = True

@@ -1,10 +1,12 @@
 from django.contrib import admin
+from .models import *
+from guardian.admin import GuardedModelAdmin
 
 # Register your models here.
 
-from .models import Capsule
-admin.site.register(Capsule)
+class CapsuleAdmin(GuardedModelAdmin):
+    pass
 
-from .models import Creator
+admin.site.register(Capsule, CapsuleAdmin)
 admin.site.register(Creator)
 
