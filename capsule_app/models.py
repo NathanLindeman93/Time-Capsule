@@ -4,9 +4,19 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from guardian.shortcuts import assign_perm
+from .validators import *
+from django.core.validators import *
 
 
 # Create your models here.
+
+class Video(models.Model):
+    caption = models.CharField(max_length=200, default = 'Video')
+    video = models.FileField(upload_to="video/%y/%m/%d/")
+
+    def __str__(self):
+        return self.caption
+
 
 class Creator(models.Model):
 
@@ -27,6 +37,7 @@ class Capsule(models.Model):
     title = models.CharField("Capsule Title", max_length = 200, default = 'Capsule Name', blank=False)
     is_primary = models.BooleanField("Primary Capsule?", default = False)
     synopsis = models.TextField("Life Story", blank = True)
+    video = models.FileField(upload_to="video/%y/%m/%d", blank = True, validators=[validate_video, file_size])
     education = models.CharField("Education", max_length = 200, blank = True)
     profession = models.CharField("Profession", max_length = 200, blank = True)
     fav_book = models.CharField("Favorite Book", max_length = 200, blank = True)

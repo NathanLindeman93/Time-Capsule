@@ -41,7 +41,7 @@ def create_capsule(request, creator_id):
     if request.method == 'POST':
         capsule_data = request.POST.copy()
         capsule_data['creator_id'] = creator_id
-        form = CapsuleForm(capsule_data)
+        form = CapsuleForm(request.POST, request.FILES)
 
         if form.is_valid():
             capsule = form.save(commit=False)
@@ -65,7 +65,7 @@ def update_capsule(request, capsule_id, creator_id):
     if request.method == 'POST':
         capsule_data = request.POST.copy()
         capsule_data['creator_id'] = creator_id
-        form = CapsuleForm(request.POST, instance=capsule)
+        form = CapsuleForm(request.POST, request.FILES, instance=capsule)
 
         if form.is_valid():
             form.save()

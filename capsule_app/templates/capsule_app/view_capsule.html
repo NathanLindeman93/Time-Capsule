@@ -8,11 +8,32 @@
 <p><h5>{{ capsule.synopsis }} </h5></p>
 <br>
 <hr>
+
+{% if capsule.video %}
+<video class="embed-responsive embed-responsive-16by9" width = "60%" controls="controls">
+    <source src="{{ capsule.video.url }}" type="video/mp4"/>
+</video>
+<hr>
+{% endif %}
+
+{% if capsule.education %}
 <h3>Education: {{ capsule.education}}</h3>
+{% endif %}
+{% if capsule.profession %}
 <h3>Profession: {{ capsule.profession}}</h3>
-<h3>Favorite Book: {{ capsule.fav_book}}</h3>
-<h3>Favorite Movie: {{ capsule.fav_movie}}</h3>
-<h3>Favorite Quote: {{ capsule.fav_quote}}</h3>
+{% endif %}
+<hr>
+<h2>Favorites:</h2>
+{% if capsule.fav_book %}
+<h3>Book: {{ capsule.fav_book}}</h3>
+{% endif %}
+{% if capsule.fav_movie %}
+<h3>Movie: {{ capsule.fav_movie}}</h3>
+{% endif %}
+{% if capsule.fav_quote %}
+<h3>Quote: {{ capsule.fav_quote}}</h3>
+{% endif %}
+
 <button class="btn btn-primary" onclick="window.history.back()">Back</button>
 
 {% endblock %}

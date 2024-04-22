@@ -9,4 +9,4 @@ class CapsuleAdmin(GuardedModelAdmin):
 
 admin.site.register(Capsule, CapsuleAdmin)
 admin.site.register(Creator)
-
+admin.site.register(Video)
