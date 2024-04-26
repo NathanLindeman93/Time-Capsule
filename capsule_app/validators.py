@@ -1,3 +1,5 @@
+# validators.py
+
 import magic
 from django.core.exceptions import ValidationError
 
@@ -11,3 +13,5 @@ def file_size(value):
     limit = 100000000
     if value.size > limit:
         raise ValidationError('The uploaded file is too large. Should not exceed 100mb.')
+    
+

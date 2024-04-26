@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'guardian',
     'capsule_app',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 #Adds support for authenticating users
