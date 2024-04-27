@@ -186,6 +186,7 @@ class ViewsTestCase(TestCase):
 
 class SeleniumTests(StaticLiveServerTestCase):
     
+    #Edit
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
