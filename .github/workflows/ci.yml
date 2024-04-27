@@ -1,0 +1,24 @@
+name: CI/CD Workflow
+
+on:
+    push:
+        branches: [Sprint02]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+    
+        steps: 
+        - name: Checkout Code
+          uses: actions/checkout@v2
+
+        - name: Set up Python@v2
+          uses: actions/setup-python
+          with: 
+            python-version: 3.11.7
+
+        - name: Install Dependencies
+          run: pip install -r requirements.txt
+
+        - name: Run Tests
+          run: python manage.py test
