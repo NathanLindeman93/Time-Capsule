@@ -190,7 +190,7 @@ class SeleniumTests(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         options = Options()
-        options.add_argument('--headless')
+        #options.add_argument('--headless')
         cls.browser = webdriver.Firefox(options=options)
 
     @classmethod

@@ -120,7 +120,7 @@ def registerPage(request):
             username = form.cleaned_data.get('username')
             group = Group.objects.get(name='creators')
             user.groups.add(group)
-            creator = Creator.objects.create(user=user,)
+            creator = Creator.objects.create(user=user, name=username)
             creator.save()
 
             messages.success(request, 'Account has been created for ' + username)
