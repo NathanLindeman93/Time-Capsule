@@ -16,6 +16,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 import time
 
 # Create your tests here.
@@ -188,8 +189,8 @@ class SeleniumTests(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        options = webdriver.FirefoxOptions()
-        options.headless = True
+        options = Options()
+        options.add_argument('--headless')
         cls.browser = webdriver.Firefox(options=options)
 
     @classmethod
