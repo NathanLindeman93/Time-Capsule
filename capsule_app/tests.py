@@ -188,7 +188,9 @@ class SeleniumTests(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        cls.browser = webdriver.Firefox(options=options)
 
     @classmethod
     def tearDownClass(cls):
